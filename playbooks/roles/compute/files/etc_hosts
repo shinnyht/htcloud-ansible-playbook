@@ -1,0 +1,21 @@
+127.0.0.1   localhost
+
+# The following lines are desirable for IPv6 capable hosts
+::1     localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+
+133.27.174.6    cinder
+133.27.174.10   controller
+133.27.174.11   cpu01
+133.27.174.12   cpu02
+133.27.174.13   cpu03
+133.27.174.14   cpu04
+133.27.174.15   cpu05
+133.27.174.16   cpu06
+133.27.174.17   cpu07
+133.27.174.18   cpu08
+133.27.174.19   cpu09
+133.27.174.20   cpu10
+133.27.174.21   cpu11
+133.27.174.22   cpu12
