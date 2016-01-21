@@ -1,0 +1,27 @@
+---
+- apt: update_cache=yes
+- apt: name=software-properties-common state=present
+ 
+- apt_repository: repo='deb http://ubuntu-cloud.archive.canonical.com/ubuntu trusty-updates/liberty main' state=present
+- apt: upgrade=dist force=yes
+ 
+- apt: name=python-openstackclient state=present force=yes
+- apt: name=chrony state=present
+
+- name: Edit hosts
+  copy: >
+    src=etc_hosts
+    dest=/etc/hosts
+
+- name: Comment out defualt ntp server
+  replace: >
+    dest=/etc/chrony/chrony.conf
+    regexp='^server'
+    replace='#server'
+
+- name: Insert new ntp rule
+  blockinfile:
+    dest: /etc/chrony/chrony.conf
+    insertafter: '^#server' 
+    content: |
+        server controller iburst

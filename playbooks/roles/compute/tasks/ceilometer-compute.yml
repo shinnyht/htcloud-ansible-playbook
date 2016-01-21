@@ -1,0 +1,8 @@
+---
+- name: Install ceilometer-agent for compute node
+  apt: name=ceilometer-agent-compute state=present force=yes
+
+- name: Copy ceilometer.conf
+  copy: >
+     src=ceilometer.conf
+     dest=/etc/ceilometer/ceilometer.conf

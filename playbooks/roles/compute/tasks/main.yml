@@ -1,0 +1,7 @@
+---
+- include: usergroup.yml
+- include: setup.yml
+- include: nova-compute.yml
+- include: neutron-compute.yml
+- include: neutron-compute.yml
+- include: instance-storage.yml

@@ -1,0 +1,27 @@
+---
+- apt: name=nfs-common state=present force=yes
+
+- name: Set node to mount nfs on boot
+  lineinfile:
+    dest: /etc/fstab
+    regexp: '^133'
+    line: '133.27.174.7:/instances  /var/lib/nova/instances nfs rw,auto 0   0'
+
+- name: Edit libvirtd.conf
+  blockinfile:
+    dest: /etc/libvirt/libvirtd.conf
+    block: |
+      listen_tls = 0
+      listen_tcp = 1
+      auth_tcp = "none"
+
+- name: Edit libvirtd option
+  lineinfile:
+    dest: /etc/default/libvirt-bin
+    regexp: '^libvirtd_opts'
+    line: 'libvirtd_opts=" -d -l"'
+
+- name: Edit nfs-common settings
+  lineinfile:
+    dest: /etc/default/nfs-common
+    line: 'NEED_IDMAPD=yes'

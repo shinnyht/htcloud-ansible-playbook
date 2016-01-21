@@ -1,0 +1,6 @@
+---
+- apt: name=nova-compute state=present force=yes
+- apt: name=sysfsutils state=present force=yes
+
+- name: Copy nova.conf file
+  template: src=nova.j2 dest=/etc/nova/nova.conf owner=nova group=nova mode=0640
