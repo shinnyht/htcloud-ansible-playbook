@@ -1,0 +1,8 @@
+---
+- name: Setup compute node for htcloud
+  hosts: compute
+  sudo: yes
+  max_fail_percentage: 0
+  
+  roles:
+    - role: compute
