@@ -3,5 +3,5 @@
 - include: setup.yml
 - include: nova-compute.yml
 - include: neutron-compute.yml
-- include: neutron-compute.yml
+- include: ceilometer-compute.yml
 - include: instance-storage.yml
