@@ -1,6 +1,7 @@
 ---
 - name: Setup compute node for htcloud
   hosts: compute
+  remote_user: htroot
   sudo: yes
   max_fail_percentage: 0
   
