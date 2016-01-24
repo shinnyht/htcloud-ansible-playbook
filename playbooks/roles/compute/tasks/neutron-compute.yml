@@ -12,6 +12,6 @@
   template:
     src: linuxbridge_agent.ini.j2
     dest: /etc/neutron/plugins/ml2/linuxbridge_agent.ini
-    owner:root
+    owner: root
     group: neutron
     mode: 0644
