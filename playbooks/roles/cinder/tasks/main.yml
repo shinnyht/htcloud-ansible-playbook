@@ -1,3 +1,5 @@
 ---
 - include: usergroup.yml
 - include: setup.yml
+- include: cinder.yml
+- include: reboot.yml

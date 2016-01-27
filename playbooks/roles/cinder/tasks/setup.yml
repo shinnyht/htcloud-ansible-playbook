@@ -7,7 +7,7 @@
  
 # Install necessary components
 - apt: name=python-openstackclient state=present force=yes
-- apt: name=chrony state=present
+- apt: name=chrony state=present force=yes
 
 - name: Edit hosts
   copy:
