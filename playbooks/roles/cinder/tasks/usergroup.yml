@@ -1,0 +1,9 @@
+---
+- name: Change Ubuntu default users uid/gid to 2000
+  command: bash -c "(grep ':1000:' /etc/group | grep -v rg > /dev/null) && groupmod -g 2000 $(grep 1000 /etc/group | awk -F ':' '{print $1}')"
+
+- name: Add RG group as gid 1000
+  group: name=rg gid=1000 state=present
+
+- name: Change owner of Ubuntu default user directory to 2000 
+  command: bash -c "chown -R :2000 /home/$(grep 2000 /etc/group | awk -F ':' '{print $1}')"

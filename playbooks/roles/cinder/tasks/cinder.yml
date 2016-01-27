@@ -1,0 +1,32 @@
+---
+# Install cinder packages
+- apt: name=lvm2 state=present force=yes
+- apt: name=cinder-volume state=present force=yes
+- apt: name=python-mysqldb state=present force=yes
+
+- name: Discover iSCSI target from htfs-v2
+  open_iscsi: show_nodes=yes discover=yes portal=133.27.170.3
+
+- name: Mount cloudfs
+  open_iscsi: login=yes target=iqn.2004-04.com.qnap:ts-ec880u-rp:iscsi.cindervol.f23ddc
+
+# BELOW: ONLY DO IT WHEN THIS IS THE FIRST TIME
+#        TO CREATE VOLUMES ON MOUNTED STORAGE
+#
+#- name: Create lvm volume on /dev/sdb
+#  command: bash -c "pvcreate /dev/sdb"
+#  lvg: vg=vg.cinder-volumes pvs=/dev/sdb 
+
+- name: Edit lvm access filter 
+  lineinfile:
+    dest: /etc/lvm/lvm.conf
+    regexp: '^    filter'
+    line: '    filter = [ "a/sdb/", "r/.*/" ]'
+
+- name: Copy cinder.conf
+  copy:
+    src: cinder.conf
+    dest: /etc/cinder/cinder.conf
+
+- name: Delete default sqlite file
+  file: path=/var/lib/cinder/cinder.sqlite state=absent

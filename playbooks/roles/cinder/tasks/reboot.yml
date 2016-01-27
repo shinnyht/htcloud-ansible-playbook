@@ -1,0 +1,10 @@
+---
+# Stop services
+- service: name=tgt state=stopped
+- service: name=cinder-volume state=stopped
+
+- name: Disconnect iSCSI mount
+  open_iscsi: login=no target=iqn.2004-04.com.qnap:ts-ec880u-rp:iscsi.cindervol.f23ddc
+
+- name: Reboot system
+  command: bash -c "reboot"

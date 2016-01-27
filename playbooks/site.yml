@@ -1,2 +1,3 @@
 ---
 - include: compute.yml
+- include: cinder.yml
