@@ -1,5 +1,6 @@
 ---
-- apt: name=nfs-common state=present force=yes
+- name: Install nfs-common package
+  apt: name=nfs-common state=present force=yes
 
 - name: Set node to mount nfs on boot
   lineinfile:

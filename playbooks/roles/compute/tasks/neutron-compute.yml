@@ -1,11 +1,17 @@
 ---
+# Install neutron packages
 - apt: name=neutron-plugin-linuxbridge-agent state=present force=yes
 - apt: name=conntrack state=present force=yes
 
 - name: Copy neutron.conf
-  copy: >
-    src=neutron.conf
-    dest=/etc/neutron/neutron.conf
+  copy:
+    src: neutron.conf
+    dest: /etc/neutron/neutron.conf
 
 - name: Edit linuxbridge_agent.ini
-  template: src=linuxbridge_agent.ini.j2 dest=/etc/neutron/plugins/ml2/linuxbridge_agent.ini owner=root group=neutron mode=0644
+  template:
+    src: linuxbridge_agent.ini.j2
+    dest: /etc/neutron/plugins/ml2/linuxbridge_agent.ini
+    owner:root
+    group: neutron
+    mode: 0644

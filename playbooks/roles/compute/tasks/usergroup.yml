@@ -1,9 +1,11 @@
 ---
+# Create common groups between compute nodes
 - group: name=nova gid=113
 - group: name=ceilometer gid=116
 - group: name=libvirtd gid=114
 - group: name=kvm gid=112
 
+# Create common users between compute nodes
 - user: name=nova uid=106 group=nova groups=libvirtd append=yes
 - user: name=ceilometer uid=110 group=ceilometer
 - user: name=libvirt-qemu uid=107 group=kvm

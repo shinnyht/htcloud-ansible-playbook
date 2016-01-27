@@ -1,3 +1,8 @@
 ---
+# Stop services
+- service: name=nova-compute state=stopped
+- service: name=neutron-plugin-linuxbridge-agent state=stopped
+- service: name=ceilometer-agent-compute state=stopped
+
 - name: Reboot system
   command: bash -c "reboot"
