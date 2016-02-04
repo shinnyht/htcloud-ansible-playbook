@@ -1,6 +1,7 @@
 ---
 - name: Setup block-storage(cinder) node for htcloud
   hosts: cinder
+  remote_user: htroot
   sudo: yes
   max_fail_percentage: 0
   
